@@ -1,0 +1,23 @@
+{
+  "name": "geojson-network-node-snap",
+  "version": "1.0.1",
+  "description": "Snap line ends to nearest network node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royhobbstn/geojson-network-node-snap.git"
+  },
+  "author": "Daniel Trone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royhobbstn/geojson-network-node-snap/issues"
+  },
+  "homepage": "https://github.com/royhobbstn/geojson-network-node-snap#readme",
+  "dependencies": {
+    "geokdbush": "1.1.0",
+    "kdbush": "3.0.0"
+  }
+}
