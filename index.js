@@ -1,7 +1,7 @@
 const KDBush = require('kdbush');
 const geokdbush = require('geokdbush');
 
-const snapNearby = function (geo, debugBoolean) {
+const snapNearby = function (geo, km, debugBoolean) {
 
   const features = Array.isArray(geo) ? geo : [...geo.features];
 
@@ -39,7 +39,7 @@ const snapNearby = function (geo, debugBoolean) {
     // 0.05km is 164ft.  Anything further won't be matched.
     // 1km might be library bug
 
-    const nearest = geokdbush.around(index1, lng, lat, 2, 0.05);
+    const nearest = geokdbush.around(index1, lng, lat, 2, km);
 
     if (nearest[1]) {
       replaceNode[vpt] = nearest[1];
