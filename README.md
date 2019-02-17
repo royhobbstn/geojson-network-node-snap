@@ -2,23 +2,29 @@
 Snap line ends to nearest network node
 
 
-TODO
-
-More details of why, what and how this works.
-
-Basically:
-```
+```bash
 npm install geojson-network-node-snap --save
 ```
 
-and
-
-```
+```javascript
 const snapNearby = require('geojson-network-node-snap');
+const fs = require('fs').promises;
 
-const geo = require('geojsonFile.json');
+main();
 
-const km = 0.05;  // max km tolerance to look for a node to snap to
+async function main() {
+    // load and parse GeoJSON LineString dataset
+    const geo_raw = await fs.readFile('./rough_network.geojson', 'utf8');
+    const geo = JSON.parse(geo_raw);
+    
+    // max km distance to look for a node to snap to
+    const km = 0.05;  
 
-const newGeo = snapNearby(geo, km);
+    // perform operation
+    const newGeo = snapNearby(geo, km);
+
+    // save new geojson to file
+    await fs.writeFile('./corrected_network.geojson', JSON.stringify(newGeo), 'utf8');
 ```
+
+See blog post [Cleaning a GeoJSON Network](https://www.danieltrone.com/post/clean-geojson-network-javascript/#snap-nearby-nodes) for more information.
